@@ -6,24 +6,11 @@ import css from "./ContactForm.module.css";
 import { CSSTransition } from "react-transition-group";
 import listTransitionPop from "../contactList/listPop.module.css";
 import { connect } from "react-redux";
-import { changeInputName,changeInputNumber, handleSubmit, changeInputFilter} from "../../redux/actions.js";
+import { changeInputName,changeInputNumber, handleSubmit} from "../../redux/actions.js";
 
 const ContactForm = (props) => {
-  // contacts,
-  // handleSubmit,
-  // handleChange,
-  // handleChangeNumber,
-  // value,
-  // valueNum,
-  // name,
-  // arr,
-  // number,
-  // onChangeInputFilter,
-  // valueFilter,
-  // handleDelete
-  // }) => {
   return (
-  
+
     <>
       <form onSubmit={(e)=> {e.preventDefault(); props.handleSubmitInput()}}>
         <div className={css.contactForm}>
@@ -57,9 +44,7 @@ const ContactForm = (props) => {
             <div className={css.contactForm}>
               <h2>Find contacts by name</h2>
 
-              <Filter
-              val={props.name}
-              inputFilter={props.changeInputFilter}
+              <Filter inputFilter={props.inputFilter}
               />
             </div>
           </CSSTransition>
@@ -86,10 +71,7 @@ const mapDispatchToProps = dispatch => ({
   },
   handleSubmitInput: () => {
     dispatch(handleSubmit());
-  },
-  // changeInputFilter: params=>{
-  //   dispatch(changeInputFilter(params))
-  // }
+  }
 });
 
 export default connect( mapStateToProps, mapDispatchToProps)(ContactForm);

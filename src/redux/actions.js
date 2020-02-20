@@ -1,10 +1,5 @@
 import Types from "./types";
 
-export const saveContact=(value)=>({
-    type: Types.SAVE_CONTACT,
-    payload: {value}
-});
-
 export const deleteContact=(id)=>({
     type: Types.DELETE_CONTACT,
     payload: id
@@ -33,3 +28,7 @@ export const changeInputFilter=(value)=>({
     type: Types.CHANGE_INPUT_FILTER,
     payload: value
 });
+
+export const showNotification=()=>({
+    type: Types.SHOW_NOTIFICATION
+})

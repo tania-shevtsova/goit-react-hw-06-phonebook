@@ -3,6 +3,7 @@ const uuidv1 = require("uuid/v1");
 
 const INT = {
   contacts: [],
+  filterArr:[],
   name: "",
   number: "",
   filter: "",
@@ -12,11 +13,8 @@ const INT = {
 
 export const contacts = (state = INT, { type, payload }) => {
   switch (type) {
-    // case Types.SAVE_CONTACT:
-    // return {...state,contacts:[...state.contacts, ...[payload.value]]}
 
     case Types.DELETE_CONTACT:
-      console.log("PAYLOAD", payload);
       return {
         ...state,
         contacts: [...state.contacts.filter(el => el.id !== payload)]
@@ -30,16 +28,12 @@ export const contacts = (state = INT, { type, payload }) => {
 
     case Types.HANDLE_SUBMIT:
     
-      if (state.contacts.find(el => el.name === state.name)) {
+      if (state.contacts.find(el => el.name.toLowerCase() === state.name.toLowerCase())) {
         return {
           ...state,
           onNotification: true,
           notificationMessage: (
             `${state.name} already exists in your contact list!` ),
-            // setTimeout(() => {
-            //     { onNotification:false }
-            //   }, 1500),
-        
           name:'',
           number: ''
 
@@ -72,13 +66,11 @@ export const contacts = (state = INT, { type, payload }) => {
     break;
       
 
-    // case Types.CHANGE_INPUT_FILTER:
-    //   return {...state, filter: [payload.value], contacts: [...state.contacts.find(
-    //         el => el.name.toLowerCase() === payload.value.toLowerCase()
-    //       )] }
-        
-          
-      
+    case Types.CHANGE_INPUT_FILTER:
+      return {...state,filter:payload, filterArr: [...state.contacts.filter(el => el.name.includes(payload)) ] }
+
+    case Types.SHOW_NOTIFICATION:
+      return {...state, onNotification: false }
 
     default:
       return state;

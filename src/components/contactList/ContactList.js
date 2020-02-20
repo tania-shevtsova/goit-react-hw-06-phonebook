@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 const ContactList = (props) => (
 
   <TransitionGroup component="ul">
-    {props.contacts.map(el => (
+  {props.filter !=="" ?(props.filterArr.map(el => (
       <CSSTransition
           key={el.id}
           timeout={250}
@@ -16,7 +16,17 @@ const ContactList = (props) => (
         >
           <ContactItem key={el.id} el={el} />
         </CSSTransition>
-    ))}
+    ))):
+    (props.contacts.map(el => (
+      <CSSTransition
+          key={el.id}
+          timeout={250}
+          unmountOnExit
+          classNames={listTransitionSlide}
+        >
+          <ContactItem key={el.id} el={el} />
+        </CSSTransition>
+    )))}
 
 
   </TransitionGroup>
