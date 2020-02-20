@@ -5,19 +5,11 @@ import { connect } from "react-redux";
 import { changeInputFilter } from "../../redux/actions";
 
 const Filter = props => (
-  // <CSSTransition
-  //   // in={valueFilter !== null}
-  //   timeout={250}
-  //   unmountOnExit
-  //   classNames={listTransitionSlide}
-  // >
   <input
     minLength={5}
     type="text"
     onChange={e => props.inputFilter(e.target.value)}
-    // value={props.filter}
   />
-  // </CSSTransition>
 );
 
 const mapStateToProps = state => state;

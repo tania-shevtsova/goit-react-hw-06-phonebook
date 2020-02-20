@@ -1,7 +1,5 @@
 import React from "react";
 import css from "./contactItem.module.css";
-import { connect } from "react-redux";
-import {deleteContact} from "../../redux/actions.js";
 
 const ContactItem = (props) => {
 
@@ -23,11 +21,4 @@ const ContactItem = (props) => {
   );
 };
 
-const mapStateToProps = (state) => state;
-
-const mapDispatchToProps = dispatch=>({
-  handleDelete: (id)=>{dispatch(deleteContact(id))}
-});
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(ContactItem);
+export default ContactItem;

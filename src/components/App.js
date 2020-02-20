@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ContactForm from "./contact-form/ContactForm";
+import ContactForm from "./contact-form/ContactFormContainer";
 import css from "./App.module.css";
 import transitions from "../transitions.module.css";
 import cssForm from "./contact-form/ContactForm.module.css";
@@ -7,8 +7,8 @@ import { CSSTransition } from "react-transition-group";
 import "pnotify/dist/es/PNotifyAnimate";
 import Notify from "./notify/Notify";
 import tr from "./notify/tr.module.css";
-import {showNotification} from '../redux/actions';
-import { connect } from "react-redux";
+// import {showNotification} from '../redux/actions';
+// import { connect } from "react-redux";
 
 class App extends Component {
   state = {
@@ -54,11 +54,11 @@ class App extends Component {
     );
   }
 }
-const mapStateToProps = state => state;
+// const mapStateToProps = state => state;
 
-const mapDispatchToProps = (dispatch)=>({
-  showNotifications: ()=>dispatch(showNotification())
-})
+// const mapDispatchToProps = (dispatch)=>({
+//   showNotifications: ()=>dispatch(showNotification())
+// })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+ export default App;

@@ -1,8 +1,7 @@
 import React from "react";
-import ContactItem from "../contactItem/ContactItem";
+import ContactItem from "../contactItem/ContactItemContainer";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import listTransitionSlide from "./listSlide.module.css";
-import {connect} from 'react-redux';
 
 const ContactList = (props) => (
 
@@ -32,7 +31,5 @@ const ContactList = (props) => (
   </TransitionGroup>
 )
 
-const mapStateToProps = (state) => state
 
-
-export default connect(mapStateToProps)(ContactList);
+export default ContactList;

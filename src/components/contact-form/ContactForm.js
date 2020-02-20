@@ -1,12 +1,10 @@
 import React from "react";
-import ContactItem from "../contactItem/ContactItem";
-import ContactList from "../contactList/ContactList";
+import ContactItem from "../contactItem/ContactItemContainer";
+import ContactList from "../contactList/ContactListContainer";
 import Filter from "../filter/Filter";
 import css from "./ContactForm.module.css";
 import { CSSTransition } from "react-transition-group";
 import listTransitionPop from "../contactList/listPop.module.css";
-import { connect } from "react-redux";
-import { changeInputName,changeInputNumber, handleSubmit} from "../../redux/actions.js";
 
 const ContactForm = (props) => {
   return (
@@ -60,18 +58,4 @@ const ContactForm = (props) => {
   );
 };
 
-const mapStateToProps = state => state;
-
-const mapDispatchToProps = dispatch => ({
-  handleChangeName: params => {
-    dispatch(changeInputName(params));
-  },
-  handleChangeNumber: params => {
-    dispatch(changeInputNumber(params));
-  },
-  handleSubmitInput: () => {
-    dispatch(handleSubmit());
-  }
-});
-
-export default connect( mapStateToProps, mapDispatchToProps)(ContactForm);
+export default ContactForm;
