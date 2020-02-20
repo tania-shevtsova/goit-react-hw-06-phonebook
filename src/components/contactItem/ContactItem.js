@@ -1,8 +1,7 @@
 import React from "react";
 import css from "./contactItem.module.css";
 
-const ContactItem = (props) => {
-
+const ContactItem = props => {
   return (
     <>
       <div>
@@ -11,7 +10,7 @@ const ContactItem = (props) => {
           <button
             className={css.contactItemButtonDelete}
             type="button"
-            onClick={()=>props.handleDelete(props.el.id)}
+            onClick={() => props.handleDelete(props.el.id)}
           >
             <span className={css.closeSymbol}>{`\u2716`}</span>
           </button>

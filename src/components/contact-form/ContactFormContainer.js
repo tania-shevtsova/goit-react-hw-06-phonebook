@@ -1,6 +1,10 @@
 import { connect } from "react-redux";
-import { changeInputName,changeInputNumber, handleSubmit} from "../../redux/actions.js";
-import ContactForm from './ContactForm';
+import {
+  changeInputName,
+  changeInputNumber,
+  handleSubmit
+} from "../../redux/actions.js";
+import ContactForm from "./ContactForm";
 
 const mapStateToProps = state => state;
 
@@ -16,4 +20,7 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export default connect( mapStateToProps, mapDispatchToProps)(ContactForm);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ContactForm);

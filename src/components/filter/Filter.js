@@ -1,6 +1,4 @@
 import React from "react";
-import { CSSTransition } from "react-transition-group";
-import listTransitionSlide from "../contactList/listSlide.module.css";
 import { connect } from "react-redux";
 import { changeInputFilter } from "../../redux/actions";
 

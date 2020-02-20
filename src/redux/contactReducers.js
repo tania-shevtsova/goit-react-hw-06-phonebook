@@ -1,9 +1,10 @@
+import { createReducer } from "@reduxjs/toolkit";
 import Types from "./types";
 const uuidv1 = require("uuid/v1");
 
 const INT = {
   contacts: [],
-  filterArr:[],
+  filterArr: [],
   name: "",
   number: "",
   filter: "",
@@ -11,68 +12,68 @@ const INT = {
   notificationMessage: ""
 };
 
-export const contacts = (state = INT, { type, payload }) => {
-  switch (type) {
+export const contacts = createReducer(INT, {
+  [Types.DELETE_CONTACT]: (state, { payload }) => {
+    return {
+      ...state,
+      contacts: [...state.contacts.filter(el => el.id !== payload)]
+    };
+  },
 
-    case Types.DELETE_CONTACT:
+  [Types.CHANGE_INPUT_NAME]: (state, { payload }) => {
+    return { ...state, name: payload };
+  },
+
+  [Types.CHANGE_INPUT_NUMBER]: (state, { payload }) => {
+    return { ...state, number: payload };
+  },
+
+  [Types.HANDLE_SUBMIT]: (state, { payload }) => {
+    if (
+      state.contacts.find(
+        el => el.name.toLowerCase() === state.name.toLowerCase()
+      )
+    ) {
       return {
         ...state,
-        contacts: [...state.contacts.filter(el => el.id !== payload)]
+        onNotification: true,
+        notificationMessage: `${state.name} already exists in your contact list!`,
+        name: "",
+        number: ""
       };
+    } else {
+      if (state.name === "") {
+        alert("Please, enter a name!");
+        return { ...state };
+      }
 
-    case Types.CHANGE_INPUT_NAME:
-      return { ...state, name: payload };
-
-    case Types.CHANGE_INPUT_NUMBER:
-      return { ...state, number: payload };
-
-    case Types.HANDLE_SUBMIT:
-    
-      if (state.contacts.find(el => el.name.toLowerCase() === state.name.toLowerCase())) {
+      if (state.number === "") {
+        alert("Please, enter a phone number!");
+        return { ...state };
+      }
+      if (state.number !== null && state.name !== null) {
         return {
           ...state,
-          onNotification: true,
-          notificationMessage: (
-            `${state.name} already exists in your contact list!` ),
-          name:'',
-          number: ''
-
+          contacts: [
+            ...state.contacts,
+            { name: state.name, number: state.number, id: uuidv1() }
+          ],
+          name: "",
+          number: ""
         };
-      
       }
-      else{
-        if (state.name === "") {
-            alert("Please, enter a name!");
-            return {...state}
-          }
-    
-          if (state.number === "") {
-            alert("Please, enter a phone number!");
-            return {...state};
-          }
-          if (state.number !== null &&
-            state.name !== null) {
-                return {
-              ...state,
-              contacts: [
-                ...state.contacts,
-                { name: state.name, number: state.number, id: uuidv1() }
-              ],
-              name: "",
-              number: ""
-            }
-        }
-      }
-    break;
-      
+    }
+  },
 
-    case Types.CHANGE_INPUT_FILTER:
-      return {...state,filter:payload, filterArr: [...state.contacts.filter(el => el.name.includes(payload)) ] }
+  [Types.CHANGE_INPUT_FILTER]: (state, { payload }) => {
+    return {
+      ...state,
+      filter: payload,
+      filterArr: [...state.contacts.filter(el => el.name.includes(payload))]
+    };
+  },
 
-    case Types.SHOW_NOTIFICATION:
-      return {...state, onNotification: false }
-
-    default:
-      return state;
+  [Types.SHOW_NOTIFICATION]: (state, { payload }) => {
+    return { ...state, onNotification: false };
   }
-};
+});

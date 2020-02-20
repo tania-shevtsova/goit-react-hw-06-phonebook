@@ -6,11 +6,15 @@ import css from "./ContactForm.module.css";
 import { CSSTransition } from "react-transition-group";
 import listTransitionPop from "../contactList/listPop.module.css";
 
-const ContactForm = (props) => {
+const ContactForm = props => {
   return (
-
     <>
-      <form onSubmit={(e)=> {e.preventDefault(); props.handleSubmitInput()}}>
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          props.handleSubmitInput();
+        }}
+      >
         <div className={css.contactForm}>
           <span>Name</span>
           <input
@@ -42,15 +46,14 @@ const ContactForm = (props) => {
             <div className={css.contactForm}>
               <h2>Find contacts by name</h2>
 
-              <Filter inputFilter={props.inputFilter}
-              />
+              <Filter inputFilter={props.inputFilter} />
             </div>
           </CSSTransition>
         </>
 
         {props.contacts.length > 0 && (
           <ContactList>
-            <ContactItem handleDelete={props.handleDelete}/>
+            <ContactItem handleDelete={props.handleDelete} />
           </ContactList>
         )}
       </form>

@@ -7,8 +7,6 @@ import { CSSTransition } from "react-transition-group";
 import "pnotify/dist/es/PNotifyAnimate";
 import Notify from "./notify/Notify";
 import tr from "./notify/tr.module.css";
-// import {showNotification} from '../redux/actions';
-// import { connect } from "react-redux";
 
 class App extends Component {
   state = {
@@ -24,10 +22,10 @@ class App extends Component {
   render() {
     const { isOpen } = this.state;
 
-    if(this.props.onNotification){
-      setTimeout(()=>{
-        this.props.showNotifications()
-      }, 1500)
+    if (this.props.onNotification) {
+      setTimeout(() => {
+        this.props.showNotifications();
+      }, 1500);
     }
 
     return (
@@ -54,11 +52,5 @@ class App extends Component {
     );
   }
 }
-// const mapStateToProps = state => state;
 
-// const mapDispatchToProps = (dispatch)=>({
-//   showNotifications: ()=>dispatch(showNotification())
-// })
-
-
- export default App;
+export default App;
