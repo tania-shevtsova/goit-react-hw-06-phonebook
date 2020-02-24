@@ -16,8 +16,13 @@ export const contacts = createReducer(INT, {
   [Types.DELETE_CONTACT]: (state, { payload }) => {
     return {
       ...state,
-      contacts: [...state.contacts.filter(el => el.id !== payload)]
+      contacts: [...state.contacts.filter(el => el.id !== payload)],
+      filterArr: [...state.contacts.filter(el => el.id !== payload)]
     };
+  },
+
+  [Types.UPDATE_FILTER]: (state, { payload }) => {
+    return [...state, payload];
   },
 
   [Types.CHANGE_INPUT_NAME]: (state, { payload }) => {
@@ -56,6 +61,10 @@ export const contacts = createReducer(INT, {
           ...state,
           contacts: [
             ...state.contacts,
+            { name: state.name, number: state.number, id: uuidv1() }
+          ],
+          filterArr: [
+            ...state.filterArr,
             { name: state.name, number: state.number, id: uuidv1() }
           ],
           name: "",

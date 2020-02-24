@@ -4,8 +4,9 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import listTransitionSlide from "./listSlide.module.css";
 
 const ContactList = props => (
+  
   <TransitionGroup component="ul">
-    {props.filter !== ""
+     {props.filter !== ""
       ? props.filterArr.map(el => (
           <CSSTransition
             key={el.id}
@@ -13,7 +14,7 @@ const ContactList = props => (
             unmountOnExit
             classNames={listTransitionSlide}
           >
-            <ContactItem key={el.id} el={el} />
+            <ContactItem key={el.id} el={el}/>
           </CSSTransition>
         ))
       : props.contacts.map(el => (
@@ -23,9 +24,9 @@ const ContactList = props => (
             unmountOnExit
             classNames={listTransitionSlide}
           >
-            <ContactItem key={el.id} el={el} />
+            <ContactItem key={el.id} el={el}/>
           </CSSTransition>
-        ))}
+        )) } 
   </TransitionGroup>
 );
 

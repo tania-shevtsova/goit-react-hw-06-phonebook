@@ -1,16 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
-import { changeInputFilter } from "../../redux/actions";
+import { changeInputFilter,  } from "../../redux/actions";
 
 const Filter = props => (
+  <>
   <input
     minLength={5}
     type="text"
     onChange={e => props.inputFilter(e.target.value)}
   />
+
+  </>
 );
 
-const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => ({
   inputFilter: param => {
@@ -19,6 +21,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Filter);

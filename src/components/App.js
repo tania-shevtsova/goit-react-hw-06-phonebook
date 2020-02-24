@@ -17,11 +17,11 @@ class App extends Component {
     this.setState({
       isOpen: true
     });
+
   }
 
   render() {
     const { isOpen } = this.state;
-
     if (this.props.onNotification) {
       setTimeout(() => {
         this.props.showNotifications();

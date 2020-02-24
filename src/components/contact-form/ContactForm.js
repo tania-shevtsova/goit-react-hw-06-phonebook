@@ -53,7 +53,7 @@ const ContactForm = props => {
 
         {props.contacts.length > 0 && (
           <ContactList>
-            <ContactItem handleDelete={props.handleDelete} />
+            <ContactItem handleDelete={props.handleDelete}/>
           </ContactList>
         )}
       </form>
